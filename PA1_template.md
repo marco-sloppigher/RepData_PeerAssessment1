@@ -13,28 +13,17 @@ library(readr)
 
 ```r
 df <- read.csv("activity.csv")
-```
-
-```
-## Warning in file(file, "rt"): cannot open file 'activity.csv': No such file or directory
-```
-
-```
-## Error in file(file, "rt"): cannot open the connection
-```
-
-```r
 head(df)
 ```
 
 ```
-##   steps       date interval parsed.interval
-## 1    NA 2012-10-01   000000        00:00:00
-## 2    NA 2012-10-01   000500        00:05:00
-## 3    NA 2012-10-01   001000        00:10:00
-## 4    NA 2012-10-01   001500        00:15:00
-## 5    NA 2012-10-01   002000        00:20:00
-## 6    NA 2012-10-01   002500        00:25:00
+##   steps       date interval
+## 1    NA 2012-10-01        0
+## 2    NA 2012-10-01        5
+## 3    NA 2012-10-01       10
+## 4    NA 2012-10-01       15
+## 5    NA 2012-10-01       20
+## 6    NA 2012-10-01       25
 ```
 
 A closer look at the <tt>interval</tt> variable reveals that the intervals represent the time of the day in hours and minutes, with omitted leading zeros: in the first row of the data frame we thus have the number of steps taken on October 1, 2012, between 00:00 and 00:05 (i.e. between midnight and five minutes past midnight).
@@ -45,18 +34,18 @@ df[1000:1010,]
 ```
 
 ```
-##      steps       date interval parsed.interval
-## 1000     0 2012-10-04   111500        11:15:00
-## 1001     0 2012-10-04   112000        11:20:00
-## 1002   180 2012-10-04   112500        11:25:00
-## 1003    21 2012-10-04   113000        11:30:00
-## 1004     0 2012-10-04   113500        11:35:00
-## 1005     0 2012-10-04   114000        11:40:00
-## 1006     0 2012-10-04   114500        11:45:00
-## 1007     0 2012-10-04   115000        11:50:00
-## 1008     0 2012-10-04   115500        11:55:00
-## 1009   160 2012-10-04   120000        12:00:00
-## 1010    79 2012-10-04   120500        12:05:00
+##      steps       date interval
+## 1000     0 2012-10-04     1115
+## 1001     0 2012-10-04     1120
+## 1002   180 2012-10-04     1125
+## 1003    21 2012-10-04     1130
+## 1004     0 2012-10-04     1135
+## 1005     0 2012-10-04     1140
+## 1006     0 2012-10-04     1145
+## 1007     0 2012-10-04     1150
+## 1008     0 2012-10-04     1155
+## 1009   160 2012-10-04     1200
+## 1010    79 2012-10-04     1205
 ```
 
 From the data frame snippet above we see, for example, that on October 4, 2012, the subject took 180 steps between 11:25 and 11:30. We can now proceed to aggregate the data and compute the total number of steps taken in each day, and use the outcome to create a histogram. 
@@ -133,13 +122,13 @@ head(df)
 ```
 
 ```
-##   steps       date interval parsed.interval
-## 1    NA 2012-10-01   000000        00:00:00
-## 2    NA 2012-10-01   000500        00:05:00
-## 3    NA 2012-10-01   001000        00:10:00
-## 4    NA 2012-10-01   001500        00:15:00
-## 5    NA 2012-10-01   002000        00:20:00
-## 6    NA 2012-10-01   002500        00:25:00
+##   steps       date interval
+## 1    NA 2012-10-01   000000
+## 2    NA 2012-10-01   000500
+## 3    NA 2012-10-01   001000
+## 4    NA 2012-10-01   001500
+## 5    NA 2012-10-01   002000
+## 6    NA 2012-10-01   002500
 ```
 
 We then aggregate the data to obtain the average number of steps taken in each interval, over the two months, and we convert the interval into the format HH:MM:SS
@@ -221,13 +210,13 @@ head(df)
 ```
 
 ```
-##   steps       date interval parsed.interval parsed.interval
-## 1    NA 2012-10-01   000000        00:00:00        00:00:00
-## 2    NA 2012-10-01   000500        00:05:00        00:05:00
-## 3    NA 2012-10-01   001000        00:10:00        00:10:00
-## 4    NA 2012-10-01   001500        00:15:00        00:15:00
-## 5    NA 2012-10-01   002000        00:20:00        00:20:00
-## 6    NA 2012-10-01   002500        00:25:00        00:25:00
+##   steps       date interval parsed.interval
+## 1    NA 2012-10-01   000000        00:00:00
+## 2    NA 2012-10-01   000500        00:05:00
+## 3    NA 2012-10-01   001000        00:10:00
+## 4    NA 2012-10-01   001500        00:15:00
+## 5    NA 2012-10-01   002000        00:20:00
+## 6    NA 2012-10-01   002500        00:25:00
 ```
 
 We observe missing values for some of the intervals, and we can find out that their number is 2304:
@@ -376,13 +365,13 @@ head(df_new)
 ```
 
 ```
-##   steps       date interval parsed.interval parsed.interval new_steps
-## 1    NA 2012-10-01   000000        00:00:00        00:00:00      1.72
-## 2    NA 2012-10-01   000500        00:05:00        00:05:00      0.34
-## 3    NA 2012-10-01   001000        00:10:00        00:10:00      0.13
-## 4    NA 2012-10-01   001500        00:15:00        00:15:00      0.15
-## 5    NA 2012-10-01   002000        00:20:00        00:20:00      0.08
-## 6    NA 2012-10-01   002500        00:25:00        00:25:00      2.09
+##   steps       date interval parsed.interval new_steps
+## 1    NA 2012-10-01   000000        00:00:00      1.72
+## 2    NA 2012-10-01   000500        00:05:00      0.34
+## 3    NA 2012-10-01   001000        00:10:00      0.13
+## 4    NA 2012-10-01   001500        00:15:00      0.15
+## 5    NA 2012-10-01   002000        00:20:00      0.08
+## 6    NA 2012-10-01   002500        00:25:00      2.09
 ```
 
 We can now proceed to aggregate the new data, visualize the histogram with imputed values and compare it to the one in section 2 (with missing values):
@@ -462,13 +451,13 @@ head(df_new)
 ```
 
 ```
-##   steps       date interval parsed.interval parsed.interval new_steps    days
-## 1    NA 2012-10-01   000000        00:00:00        00:00:00      1.72 weekday
-## 2    NA 2012-10-01   000500        00:05:00        00:05:00      0.34 weekday
-## 3    NA 2012-10-01   001000        00:10:00        00:10:00      0.13 weekday
-## 4    NA 2012-10-01   001500        00:15:00        00:15:00      0.15 weekday
-## 5    NA 2012-10-01   002000        00:20:00        00:20:00      0.08 weekday
-## 6    NA 2012-10-01   002500        00:25:00        00:25:00      2.09 weekday
+##   steps       date interval parsed.interval new_steps    days
+## 1    NA 2012-10-01   000000        00:00:00      1.72 weekday
+## 2    NA 2012-10-01   000500        00:05:00      0.34 weekday
+## 3    NA 2012-10-01   001000        00:10:00      0.13 weekday
+## 4    NA 2012-10-01   001500        00:15:00      0.15 weekday
+## 5    NA 2012-10-01   002000        00:20:00      0.08 weekday
+## 6    NA 2012-10-01   002500        00:25:00      2.09 weekday
 ```
 
 
